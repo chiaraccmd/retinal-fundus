@@ -19,39 +19,24 @@ The FIVES dataset contains 800 high-resolution fundus photographs with pixel-wis
 
 ---
 
-## 🧠 Pipeline
-
-```text
-FIVES fundus images
-        │
-        ├───────────────────────┐
-        ↓                       ↓
-Vessel segmentation       Disease classification
-U-Net + ResNet-34             ResNet-34
-        ↓                       ↓
-Dice / IoU               Accuracy / F1
-Sensitivity / Specificity     ROC / AUC
-        ↓
-Morphological closing
-        ↓
-Skeletonization
-        ↓
-Exploratory vessel features
-```
-
----
-
 ## 📁 Repository Structure
 
 ```text
-retinal-image-analysis/
+retinal-fundus/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
 ├── src/
 │   └── retinal_analysis.py
 └── results/
-    └── .gitkeep
+    ├── BioCV_Report.pdf
+    ├── augmentation_example.png
+    ├── classification_curves.png
+    ├── confusion_matrix.png
+    ├── roc_curves.png
+    ├── sample_results.png
+    └── segmentation_curves.png
+
 ```
 
 The FIVES dataset and trained model weights are not distributed with this repository.
@@ -84,6 +69,28 @@ FIVES/
 └── test/
     ├── Original/
     └── Ground Truth/
+```
+
+---
+
+## 🧠 Pipeline
+
+```text
+FIVES fundus images
+        │
+        ├─────────────────────────────────┐
+        ↓                                 ↓
+Vessel segmentation            Disease classification
+U-Net + ResNet-34              ResNet-34
+        ↓                                 ↓
+Dice / IoU                     Accuracy / F1
+Sensitivity / Specificity      ROC / AUC
+        ↓
+Morphological closing
+        ↓
+Skeletonization
+        ↓
+Exploratory vessel features
 ```
 
 ---
@@ -254,6 +261,12 @@ The largest classification limitation was the remaining confusion between **Glau
 - More rigorous retinal vascular morphometrics, including tortuosity and vessel calibre.
 - Analysis of performance as a function of FIVES image-quality labels.
 - Cross-dataset validation on additional retinal fundus datasets.
+
+---
+
+## 📝 License
+
+The code is available under the **MIT License** for academic and research use.
 
 ---
 
